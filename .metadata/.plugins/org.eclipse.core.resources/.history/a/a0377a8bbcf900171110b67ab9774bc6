@@ -1,0 +1,9 @@
+package com.entities;
+
+import javax.persistence.Entity;
+
+@Entity
+@Table(name="t_users")
+public class Users {
+
+}

@@ -1,0 +1,9 @@
+package com.dao;
+
+public interface UserDao {
+	
+	public List<Users> list();
+	public boolean delete();
+	public boolean save();
+	
+}

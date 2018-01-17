@@ -1,0 +1,48 @@
+package com.daoImpl;
+
+import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.dao.UserDao;
+import com.entities.Users;
+
+@Repository
+@Transactional
+public class UserDaoImpl implements UserDao {
+
+	@Autowired
+	SessionFactory session;
+
+	public boolean saveOrUpdate(Users users) {
+		session.getCurrentSession().saveOrUpdate(users);
+		return true;
+	}
+
+	@Override
+	public List<Users> list() {
+		// TODO Auto-generated method stub
+		return session.getCurrentSession().createQuery("from t_users").list();
+
+	}
+
+	@Override
+	public boolean delete(Users user) {
+		// TODO Auto-generated method stub
+		try {
+			session.getCurrentSession().delete(user);
+		} catch (Exception ex) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean saveOrUpdate(Users user) {
+		// TODO Auto-generated method stub
+		session.getCurrentSession().saveOrUpdate(users);
+		return true;
+	}
+}
